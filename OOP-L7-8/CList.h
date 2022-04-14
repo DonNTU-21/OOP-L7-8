@@ -10,7 +10,6 @@ class CList
 		node* next;
 	};
 	node* head,
-		* tail,
 		* p;
 	void Clear(void)
 	{
@@ -24,7 +23,8 @@ class CList
 	}
 
 public:
-	CList() { head = tail = p = 0; }
+	//CList();
+	CList() { head = p = 0; }
 	~CList() { Clear(); }
 
 	void Add(T* data)
@@ -38,7 +38,6 @@ public:
 		{
 			head = (node*)malloc(sizeof(node));
 			p = head;
-			tail = head;
 		}
 		p->data = data;
 		p->next = 0;
@@ -73,7 +72,7 @@ public:
 		node* c = head;
 		while (c)
 		{
-			cout << *(c->data) << " ";
+			cout << (* (c->data)) << " ";
 			c = c->next;
 		}
 		cout << endl;
@@ -82,7 +81,6 @@ public:
 	{
 		node* c = head;
 		node* w;
-		T* temp;
 		bool a = false;
 		int i = 1;
 		while (c)
@@ -93,13 +91,11 @@ public:
 				w->data = c->data;
 				w->next = c->next;
 				c->next = w;
-				c = c->next->next;
-				i = 0;
-			}
-			else
-			{
 				c = c->next;
+				i = 0;
+				a = true;
 			}
+			c = c->next;
 			i++;
 		}
 		return a;
