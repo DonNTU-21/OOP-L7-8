@@ -19,9 +19,9 @@ int main()
 	do
 	{
 		system("cls");
-		cout << "\t1 - Ñïèñîê <int>" << endl;
-		cout << "\t2 - Ñïèñîê <string>" << endl;
-		cout << "\t3 - Ñïèñîê ñïèñêîâ" << endl;
+		cout << "\t1 - Ð¡Ð¿Ð¸ÑÐ¾Ðº <int>" << endl;
+		cout << "\t2 - Ð¡Ð¿Ð¸ÑÐ¾Ðº <string>" << endl;
+		cout << "\t3 - Ð¡Ð¿Ð¸ÑÐ¾Ðº ÑÐ¿Ð¸ÑÐºÐ¾Ð²" << endl;
 		key = _getch(); _putch(key);
 		system("cls");
 		switch (key)
@@ -47,14 +47,14 @@ void Menu(CList<T>* list)
 	T* value = new T();
 	do
 	{
-		cout << "\t1 - Äîáàâèòü ýëåìåíò" << endl;
-		cout << "\t2 - Âûâåñòè ñïèñîê" << endl;
-		cout << "\t3 - Ïðîäóáëèðîâàòü êàæäûé N-ûé ýëåìåíò" << endl;
+		cout << "\t1 - Ð”Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚" << endl;
+		cout << "\t2 - Ð’Ñ‹Ð²ÐµÑÑ‚Ð¸ ÑÐ¿Ð¸ÑÐ¾Ðº" << endl;
+		cout << "\t3 - ÐŸÑ€Ð¾Ð´ÑƒÐ±Ð»Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ ÐºÐ°Ð¶Ð´Ñ‹Ð¹ N-Ñ‹Ð¹ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚" << endl;
 		key = _getch(); _putch(key); cout << endl;
 		switch (key)
 		{
 		case '1':
-			cout << "Ââåäèòå çíà÷åíèå: ";
+			cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ: ";
 			value = new T();
 			cin >> *value;
 			list->Add(new T(*value));
@@ -65,10 +65,10 @@ void Menu(CList<T>* list)
 			cout << endl;
 			break;
 		case '3':
-			cout << "Ââåäèòå N: ";
+			cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ N: ";
 			n = ValidateINT();
 			list->DuplicateN(n);
-			cout << "Ñïèñîê ïðîäóáëèðîâàí" << endl;
+			cout << "Ð¡Ð¿Ð¸ÑÐ¾Ðº Ð¿Ñ€Ð¾Ð´ÑƒÐ±Ð»Ð¸Ñ€Ð¾Ð²Ð°Ð½" << endl;
 			break;
 		}
 	} while (key != 27);

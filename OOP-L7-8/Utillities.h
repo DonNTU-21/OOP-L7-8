@@ -8,7 +8,7 @@ static int ValidateINT()
 	while (!isdigit(data[0]))
 	{
 		fflush(stdin);
-		std::cout << std::endl << "Íåâåğíî. Ââåäèòå ÷èñëî: ";
+		std::cout << std::endl << "ĞĞµĞ²ĞµÑ€Ğ½Ğ¾. Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ Ñ‡Ğ¸ÑĞ»Ğ¾: ";
 		std::cin >> data;
 	}
 	return atoi(data);
