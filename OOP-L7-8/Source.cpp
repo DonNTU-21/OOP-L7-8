@@ -1,45 +1,75 @@
 #include <iostream>
+#include <conio.h>
 #include <string>
 #include "CList.h"
 #include "CListF.h"
 
 using namespace std;
 
+template <class T> void Menu(CList<T>*);
 
 int main()
 {
-	CListF clistf;
-	clistf.Display();
-	setlocale(LC_ALL, "rus");
+	setlocale(LC_ALL, "rus"); 
+	int key;
 	CList<int> ints;
 	CList<string> stringList;
 	CList<CListF> lists;
-	for (int i = 0; i < 3; i++)
+
+	do
 	{
-		cout << "#" << i << endl;
-		ints.Add(new int(i+1));
-		stringList.Add(new string(to_string(i+1)+"a"));
-		lists.Add(new CListF(2));
-		cout << endl;
-	}
-	cout << "ints: " << endl;
-	ints.Display();
-	cout << endl << "list of lists: " << endl;
-	lists.Display();
+		system("cls");
+		cout << "\t1 - Список <int>" << endl;
+		cout << "\t2 - Список <string>" << endl;
+		cout << "\t3 - Список списков" << endl;
+		key = _getch(); _putch(key);
+		system("cls");
+		switch (key)
+		{
+		case '1':
+			Menu(&ints);
+			break;
+		case '2':
+			Menu(&stringList);
+			break;
+		case '3':
+			Menu(&lists);
+			break;
+		}
+	} while (key != 27);
+}
 
-
-
-	cout << endl << "stringList: " << endl;
-	stringList.Display();
-
-	ints.DuplicateN(2);
-	stringList.DuplicateN(3);
-	lists.DuplicateN(2);
-
-	cout << endl << "ints duplicated: (n=2)" << endl;
-	ints.Display();
-	cout << endl << "stringList duplicated: (n=3)" << endl;
-	stringList.Display();
-	cout << endl << "list of lists duplicated: (n=2)" << endl;
-	lists.Display();
+template <class T>
+void Menu(CList<T>* list)
+{
+	int key;
+	int n;
+	T* value = new T();
+	do
+	{
+		cout << "\t1 - Добавить элемент" << endl;
+		cout << "\t2 - Вывести список" << endl;
+		cout << "\t3 - Продублировать каждый N-ый элемент" << endl;
+		key = _getch(); _putch(key); cout << endl;
+		switch (key)
+		{
+		case '1':
+			cout << "Введите значение: ";
+			value = new T();
+			cin >> *value;
+			list->Add(new T(*value));
+			delete value;
+			break;
+		case '2':
+			list->Display();
+			cout << endl;
+			break;
+		case '3':
+			cout << "Введите N: ";
+			n = ValidateINT();
+			list->DuplicateN(n);
+			cout << "Список продублирован" << endl;
+			break;
+		}
+	} while (key != 27);
 }

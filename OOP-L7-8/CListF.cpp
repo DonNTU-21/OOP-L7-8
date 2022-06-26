@@ -1,4 +1,6 @@
 #include "CListF.h"
+#include <conio.h>
+
 
 CListF::CListF()
 {
@@ -14,6 +16,8 @@ CListF::CListF(int n)
 		this->AddItem(t);
 	}
 }
+
+
 CListF::~CListF()
 {
 }
@@ -32,7 +36,7 @@ void CListF::AddItem(int s)
 		head = newItem;
 	}
 }
-void CListF::Display()
+const void CListF::Display()
 {
 	STACK* p;
 	p = head;
@@ -41,7 +45,7 @@ void CListF::Display()
 		std::cout << p->info << " -> ";
 		p = p->next;
 	}
-	std::cout << "NULL" << std::endl;
+	std::cout << "NULL";
 }
 
 void CListF::RemoveEveryN(int n)
@@ -63,15 +67,36 @@ void CListF::RemoveEveryN(int n)
 	
 }
 
-std::ostream& operator<< (std::ostream& out, const CListF& listf)
+std::ostream& operator<< (std::ostream& out, const CListF& list)
 {
 	out << "{ ";
-	CListF q = listf;
-	while (q.head->next)
+	CListF listf = list;
+	while (listf.head->next)
 	{
-		out << q.head->info << "; ";
-		q.head = q.head->next;
+		out << listf.head->info << "; ";
+		listf.head = listf.head->next;
 	}
-	out << q.head->info <<" }";
+	out << listf.head->info << " }";
 	return out;
 }
+
+std::istream& operator>>(std::istream& in, CListF& listf)
+{
+	int key, value;
+	cout << "¬вод списка" << endl;
+	cout << "Eсли ввод списка завершЄн, нажмите Escape" << endl;
+
+	do
+	{
+		value = ValidateINT();
+		cout << "≈щЄ значение? (y/n)";
+		do
+		{
+			key = _getch(); _putch(key); cout << endl;
+		} while (key != 'y' && key != 'n');
+		listf.AddItem(value);
+	} while (key!='n');
+
+	return in;
+}
+

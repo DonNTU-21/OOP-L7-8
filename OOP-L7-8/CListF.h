@@ -1,6 +1,8 @@
 #define STACK struct node
 #include <iostream>
-
+#include "Utillities.h"
+#include <sstream>
+using namespace std;
 class CListF
 {
 	STACK
@@ -15,11 +17,11 @@ public:
 	CListF(int);
 	~CListF();
 	void AddItem(int);
-	void Display();
+	const void Display();
 	void Release();
 	void RemoveEveryN(int);
 	STACK* GetList() { return head; }
 
 	friend std::ostream& operator<< (std::ostream& out, const CListF& listf);
+	friend std::istream& operator>> (std::istream& in, CListF& listf);
 };
-
